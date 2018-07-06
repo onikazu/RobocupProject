@@ -2,16 +2,16 @@
 //審判の笛を聴く
 public class run_and_run extends PlayerLv02 {
     //デバッグのフラグを用意する
-    private boolean m_debugLv03 = false;
+    // private boolean m_debugLv03 = false;
 
     //==============================================
     //初期メッセージの解析
     protected void analyzeInitialMessage(String message) {
         super.analyzeInitialMessage(message);
         //デバッグ用の表示をする
-        if (m_debugLv03) {
-            System.out.println("m_strPlaymode = " + m_strPlayMode);
-        }
+//        if (m_debugLv03) {
+//            System.out.println("m_strPlaymode = " + m_strPlayMode);
+//        }
     }
 
     //==============================================
@@ -38,9 +38,9 @@ public class run_and_run extends PlayerLv02 {
         if (strSpeaker.startsWith("referee") == true) {
             //レフェリーの笛の処理
             m_strPlayMode = strContent;
-            if (m_debugLv03) {
-                System.out.println("m_strPlayMode = " + m_strPlayMode);
-            }
+//            if (m_debugLv03) {
+//                System.out.println("m_strPlayMode = " + m_strPlayMode);
+//            }
         }
     }
 
@@ -73,7 +73,7 @@ public class run_and_run extends PlayerLv02 {
             player[i].initialize((i % 11 + 1), teamname, "localhost", 6000);
             thread[i].start();
         }
-        player[10].m_debugLv03 = true;
+//        player[10].m_debugLv03 = true;
         System.out.println("試合への登録終了");
     }
 }
