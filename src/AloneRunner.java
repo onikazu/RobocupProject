@@ -59,24 +59,31 @@ public class AloneRunner extends StopPlayers {
     //==============================================
     //メイン
     public static void main(String[] args) {
-        StopPlayers[] player1 = new StopPlayers[21];
-        Thread[] thread1 = new Thread[21];
+        StopPlayers[] player1 = new StopPlayers[11];
+        Thread[] thread1 = new Thread[11];
         int i;
-        for (i = 0; i < 21; i++) {
+        for (i = 0; i < 11; i++) {
             String teamname = "all_stopper";
             player1[i] = new StopPlayers();
             thread1[i] = new Thread(player1[i]);
             player1[i].initialize((i % 11 + 1), teamname, "localhost", 6000);
             thread1[i].start();
         }
-        AloneRunner[] player2 = new AloneRunner[11];
-        Thread[] thread2 = new Thread[11];
+        StopPlayers[] player2 = new AloneRunner[11];
+        Thread[] thread2 = new Thread[1];
         for (i = 0; i < 11; i++) {
-            String teamname = "alone_runner";
-            player2[i] = new AloneRunner();
-            thread2[i] = new Thread(player2[i]);
-            player2[i].initialize((i % 11 + 1), teamname, "localhost", 6000);
-            thread2[i].start();
+            String teamname = "alone_runners";
+            if (i == 10) {
+                player2[i] = new AloneRunner();
+                thread2[i] = new Thread(player2[i]);
+                player2[i].initialize((i % 11 + 1), teamname, "localhost", 6000);
+                thread2[i].start();
+            }else{
+                player2[i] = new StopPlayers();
+                thread2[i] = new Thread(player2[i]);
+                player2[i].initialize((i % 11 + 1), teamname, "localhost", 6000);
+                thread2[i].start();
+            }
         }
         //player1[10].m_debugLv07 = true;
         System.out.println("試合への登録終了");
