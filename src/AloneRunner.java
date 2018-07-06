@@ -61,7 +61,7 @@ public class AloneRunner extends PlayerLv02 {
     public static void main(String[] args) {
         AloneRunner player = new AloneRunner(); //選手を一人分作
         String teamname = "Lv03Right";
-        player.initialize(22, teamname, "localhost", 6000);
+        player.initialize(23, teamname, "localhost", 6000);
 
     }
 }
