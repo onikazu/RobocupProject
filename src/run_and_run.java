@@ -59,7 +59,7 @@ public class run_and_run extends PlayerLv02 {
     //==============================================
     //メイン
     public static void main(String[] args) {
-        PlayerLv03[] player = new PlayerLv03[22];
+        run_and_run[] player = new run_and_run[22];
         Thread[] thread = new Thread[22];
         int i;
         for (i = 0; i < 22; i++) {
@@ -68,7 +68,7 @@ public class run_and_run extends PlayerLv02 {
                 teamname = "Lv03Left";
             else
                 teamname = "Lv03Right";
-            player[i] = new PlayerLv03();
+            player[i] = new run_and_run();
             thread[i] = new Thread(player[i]);
             player[i].initialize((i % 11 + 1), teamname, "localhost", 6000);
             thread[i].start();
