@@ -72,7 +72,7 @@ public class AloneRunner extends StopPlayers {
         AloneRunner[] player2 = new AloneRunner[11];
         Thread[] thread2 = new Thread[11];
         for (i = 0; i < 11; i++) {
-            String teamname = "alone runner";
+            String teamname = "alone_runner";
             player2[i] = new AloneRunner();
             thread2[i] = new Thread(player2[i]);
             player2[i].initialize((i % 11 + 1), teamname, "localhost", 6000);
