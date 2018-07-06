@@ -1,6 +1,6 @@
 //==============================================
 //審判の笛を聴く
-public class AloneRunner extends PlayerLv02 {
+public class AloneRunner extends StopPlayers {
     //デバッグのフラグを用意する
     // private boolean m_debugLv03 = false;
 
@@ -50,18 +50,36 @@ public class AloneRunner extends PlayerLv02 {
         super.play(message);
         String command = "";
         if (m_strPlayMode.startsWith("kick_off_"))
-            command = "(turn -50)";
-        else
             command = "(dash -50)";
+        else
+            command = "(dash 50)";
         send(command);
     }
 
     //==============================================
     //メイン
     public static void main(String[] args) {
-        AloneRunner player = new AloneRunner(); //選手を一人分作
-        String teamname = "Lv03Right";
-        player.initialize(23, teamname, "localhost", 6000);
-
+        StopPlayers[] player1 = new StopPlayers[21];
+        Thread[] thread1 = new Thread[21];
+        int i;
+        for (i = 0; i < 21; i++) {
+            String teamname = "all_stopper";
+            player1[i] = new StopPlayers();
+            thread1[i] = new Thread(player1[i]);
+            player1[i].initialize((i % 11 + 1), teamname, "localhost", 6000);
+            thread1[i].start();
+        }
+        AloneRunner[] player2 = new AloneRunner[11];
+        Thread[] thread2 = new Thread[11];
+        for (i = 0; i < 11; i++) {
+            String teamname = "alone runner";
+            player2[i] = new AloneRunner();
+            thread2[i] = new Thread(player2[i]);
+            player2[i].initialize((i % 11 + 1), teamname, "localhost", 6000);
+            thread2[i].start();
+        }
+        //player1[10].m_debugLv07 = true;
+        System.out.println("試合への登録終了");
     }
 }
+

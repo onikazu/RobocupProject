@@ -20,6 +20,7 @@ https://github.com/herodrigues/robocup2d-tutorial/blob/master/sections/installin
 このプログラムでは両チーム同じようにフォーメーションをとるようにしている。また、初期値として
 ゴールから対面のゴールに向かい一直線のプレーヤーが並ぶように設定した。
 
+### run_alone
 
 
 
